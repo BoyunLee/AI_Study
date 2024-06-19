@@ -1,0 +1,137 @@
+<최초 준비>
+1. 작업 폴더로 이동
+   - manage.py가 있는 폴더 위치
+   > cd C:\Users\Administrator\bk_20230314\django_project
+
+2. 가상환경 활성화
+   > conda activate pk_base
+
+3. 서버 실행
+   > python manage.py runserver
+
+4. 원하는 요청 url넣기 : index 페이지 호출
+   > http://127.0.0.1:8000/index
+
+<장고가 해석하는 순서>
+1. 웹브라우저에서 클라이언트의 요청 url주소 받아오기
+    http://127.0.0.1:8000/index
+- 호스트 주소 : http://127.0.0.1:8000
+- 페이지 주소 : /index
+
+2. 장고는 호스트 주소와 페이지 주소 분리
+- 호스트주소 뒤의 페이지 주소를 urls.py에 보내기
+
+3. 응답할 페이지 호풀 : urls.py에서 호출
+-  urls.py에서 응답할 페이지 함수 호출
+- 응답할 페이지 함수는 view.py에 정의되어 있습니다.
+
+4. 응답할 페이지 처리 : view.py에서 처리
+- 응답할 페이지 작성(html, css, javascript)
+- 응답 내용은 DB에서 조회, 입력, 수정, 삭제 등의 처리 결과를 응답 
+   또는 별도로 작성된 문자열 등의 내용으로 응답함
+- 모든 응답은 HTML 태그 코드의 문자열로 전송됩니다.
+
+5. 요청한 사용자의 브라우저에게 응답 HTML 태그 코드 전달
+- 사용자의 브라우저에서 응답받은 HTML 문자열 태그코드를 해석해서 보여주기
+- 모든 브라우저에는 HTML 문자열 태그코드를 해석하는 해석기가 있습니다.
+   * 해석기 : 파서(paser)라고 칭합니다.
+
+<사용자와 서버와의 요청/응답 데이터 타입>
+- 모든 인터넷상의 요청과 응답의 데이터는 문자 타입으로 전송됩니다.
+
+<***매우 중요***>
+- 사용자로부터 요청을 받는 데이터는 json방식으로 전송받게 됨
+  파이썬에서는 딕셔너리 타입이라고 생각하시면 됩니다. 
+  key와 value 형태로 데이터를 전송받게 됩니다.
+
+-------------------------------------------------------------------------------
+
+1. http://127.0.0.1:8000/index3/ URL을 입력하면
+- 이곳은 index3 페이지 입니다. 내용이 브라우저에 보이게 해주세요
+- 페이지 처리 함수 이름 : getIndex3
+
+2. (실습)
+- 현재 프로젝트 내에 secondapp 생성하기
+- 앱 생성 후 서버 구동하여 index 페이지 잘 나오는지 확인
+-  http://127.0.0.1:8000/index4/ 페이지 주소로 요청이 들어오는 경우
+- "이곳은 secondapp의 페이지 index4입니다."를 응답해 주기
+- 함수이름 : getIndex4
+
+3. http://127.0.0.1:8000/index5/ 페이지 주소로 요청이 들어오는 경우
+- "이곳은 secondapp의 index 페이지 입니다."를 응답해 주기
+- 함수이름 : getIndexPage
+
+4. mainapp 생성하기 
+http://127.0.0.1:8000/ 페이지 주소로 요청이 들어오는 경우
+- "이곳은 mainapp 페이지 입니다."를 응답
+- mainapp 함수명 : getIndexPage
+- 기존 url패턴을 수정하여 사용
+
+5. firstapp과 secondapp에서 아래 url을 처리해 주세요.
+   모두 각 app의 getIndexPage 함수를 호출하시면 됩니다.
+- http://127.0.0.1:8000/first/
+- http://127.0.0.1:8000/second/
+
+6. firstapp과 secondapp에서 URL 각각 처리 시에
+- http://127.0.0.1:8000/first/
+- http://127.0.0.1:8000/second/
+
+- 각 app에 index.html을 생성하여
+- [MainApp 바로가기]
+
+7. thirdapp 생성
+- http://127.0.0.1:8000/third/ 요청이 들어오면
+- thirdapp의 index.html 페이지가 호출되도록
+- index.html 페이지 내용에는 [MainApp 바로가기] 링크 표시
+- mainapp의 index.html을 통해서 http://127.0.0.1:8000/third/ 이곳으로 연결
+
+thirdapp 생성
+config settings 수정
+config urls.py 수정
+thirdapp urls.py 생성
+thirdapp views.py 수정
+thirdapp new폴더 templates\thirdapp 생성
+templates\thirdapp new파일 index.html 생성 / HTML로 언어바꿔주기
+html : 5 입력하면 초기값 나옴
+thirdapp views 작성
+mainapp index / thirdapp 바로가기 / 작성
+
+-------------------------------------------------------------------------------
+
+(실습)
+1. 작업디렉토리 생성
+- 폴더명 : tutorial
+
+2. 프로젝트 생성
+- 프로젝트명 : config
+
+3. 앱 생성
+- mainapp
+- firstapp
+- secondapp
+- thirdapp
+
+4. mainapp에서 firstapp, secondapp, thirdapp으로 링크처리
+- mainapp의 index.html에서 각 앱으로 바로가기 링크처리
+- 각 앱의 index.html 페이지에서는 mainapp으로 바로가기 링크처리
+- 모든 함수 이름은  index로 사용
+
+-------------------------------------------------------------------------------
+
+[firstapp에서 진행]
+1. http://127.0.0.1:8000/first/01_html/ 링크 처리
+- 함수명 : htmlview01
+- html 위치 : templates/firstapp/front/01_html.html
+- 내용은 : "FirstApp - 01_html 페이지 입니다."
+
+- firstapp의 index.html에서 [01_html 바로가기] 링크 생성하여 연결
+- 01_html.html 내용 하단에 [FirstApp 바로가기] 링크 생성
+
+
+
+
+
+
+
+
+

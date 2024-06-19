@@ -1,0 +1,29 @@
+[frontapp에서 진행]
+
+10. /front/10_ul/  요청 처리
+- 함수명 : ulView10
+- html명 : html/10_ul.html
+
+11. /front/11_div/  요청 처리
+- 함수명 : divView11
+- html명 : html/11_div.html
+
+12. /front/12_div/  요청 처리
+- 함수명 : divView12
+- html명 : html/12_div.html
+
+13. /front/13_jslnputForm/  요청 처리
+- 함수명 : jslnputFormView
+- html명 : html/13_jslnputForm.html
+
+---------------------------------------------------------------------
+
+[secondapp에서 진행]
+- 회원 아이디, 비밀번호, 이름을 입력 받아서
+  처리하는 로직 개발하기
+- DB에 아이디=boyun, 패스워드=0802 가 있다고 가정
+- 전송받은 데이터의 아이디와 패스워드가 모두 일치하면
+   '이름'님 로그인 되었습니다.를 보여준후 secondapp 인덱스 페이지로 이동
+- 일치하지 않으면 "일치하는 정보가 없습니다." 보여준 후 이전 페이지로 이동
+
+** 폴더명, 파일명 모두 자유
