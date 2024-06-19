@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontApp - 14_radioView Page</title>
+
+    <script type="text/javascript">
+        function goSubmit(){
+            fm = document.getElementById("fm");
+
+            mem_addr = fm.mem_addr.value;
+
+            mem_addr1 = fm.mem_addr1.value;
+            
+            alert(mem_addr1);
+
+            if(mem_addr == ""){
+                alert("지역을 입력하시오.");
+                fm.mem_addr.focus();
+                return;
+            }
+
+            if(mem_addr1 == ""){
+                alert("지역을 입력하시오.");
+                // fm.mem_addr1.focus();
+                return;
+            }
+
+            fm.action = "/front/15_radio/";
+            fm.submit();
+        }
+
+        // 전체 초기화하기
+        function goAllReload(){
+            // 새로고침 기능 추가하기
+            location.reload();
+        }
+        
+    </script>
+</head>
+<body>
+    <h3>FrontApp - 14_radioView Page</h3> 
+    <hr>
+    <p>
+        <a href="/front/">[FrontApp 바로가기]</a>
+    </p>
+
+    <form id="fm" name="fm" method="post" action="#">
+        {% csrf_token %}
+    
+        * 지역 : <input type="text" name="mem_addr" value="">
+        <br>
+        <!--지역 선택 하기 radio 버튼 생성하기-->
+        * 지역 선택 :
+            서울<input type="radio" name="mem_addr1" value="서울">
+            부산<input type="radio" name="mem_addr1" value="부산">
+            대구<input type="radio" name="mem_addr1" value="대구">
+            대전<input type="radio" name="mem_addr1" value="대전">
+        <hr>
+        <input type="button" value="전송하기" onclick="goSubmit()">
+        <!--전체 초기화 버튼--> 
+        <input type="button" value="전체 초기화" onclick="goAllReload()">
+    </form>
+</body>
+</html>

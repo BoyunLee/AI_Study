@@ -1,0 +1,25 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1> 우리동네시장</h1>
+            <div class = 'sale'>
+                <p id='fruits1' class='fruits'>
+                    <span class = 'name'> 바나나 </span>
+                    <span class = 'price'> 3000원 </span>
+                    <span class = 'inventory'> 500개 </span>
+                    <span class = 'store'> 가나다상회 </span>
+                    <a href = 'http://bit.ly/forPlaywithData' > 홈페이지[1] </a>
+                </p>
+            </div>
+            <div class = 'prepare'>
+                <p id='fruits2' class='fruits'>
+                    <span class ='name'> 파인애플 </span>
+                    <span class = 'price'> 10,000원 </span>
+                    <span class = 'inventory'> 300개 </span>
+                    <span class = 'store'> 파인상회 </span>
+                    <a href = 'http://bit.ly/forPlaywithData' > 홈페이지[2] </a>
+                </p>
+            </div>
+    </body>
+</html>

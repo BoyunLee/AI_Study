@@ -1,0 +1,89 @@
+Anaconda Prompt
+
+<버전 확인>
+
+파이썬 버전 확인하기
+> python --version
+
+conda 버전 확인하기
+> conda --version
+
+conda에 설치되어 있는 가상환경 목록 확인하기
+> conda env list
+최초에는 가상환경 이름 base 하나만 존재
+
+<버전 업그레이드>
+
+주기적 업그레이드 추천
+
+base 가상환경의 conda 업그레이드
+> conda update -n base conda / Proceed ([y]/n)? > y
+
+base 가상환경의 pip 라이브러리 업그레이드
+> python -m pip install --upgrade pip
+
+<라이브러리 설치 방법>
+
+conda 명령으로 설치 : conda 자체 라이브러리로 설치하게 됨
+
+pip 명령으로 설치 : 외부 위치에서 라이브러리를 다운받아서 설치하게 됨
+
+<환경변수 설정>
+내 PC > 속성 > 사용자 변수 > Path > 편집 > C:\Users\Administrator\anaconda3 / C:\Users\Administrator\anaconda3\Scripts / C:\Users\Administrator\anaconda3\Library\bin
+
+<base 가상환경 내에 conda로 설치된 모든 라이브러리 업그레이드>
+> conda update --all
+
+<가상환경 생성>
+
+가상환경 생성
+> conda create -n 가상환경이름 python=3.9 / 가상환경이름 : pk_base
+
+생성 확인
+> conda env list
+
+가상 환경 삭제
+> conda env remove -n pk_base
+> conda remove -n pk_base --all
+
+<가상 환경 활성화>
+활성화 : 가상환경으로 들어감
+> conda activate pk_base
+
+비활성화 : 가상환경에서 나옴
+> conda deactivate
+
+<설치된 라이브러리 확인>
+> conda list / pip list
+
+pk_base 가상환경의 pip 라이브러리 업그레이드
+> python -m pip install --upgrade pip
+
+<기본 라이브러리 설치>
+주피터 노트북 설치 : 커널 연결을 위해 처음에 설치
+> pip install jupyter notebook
+
+커널 생성하기
+> python -m ipykernel install --user --name 가상환경이름 --display-name 생성할커널이름 
+> python -m ipykernel install --user --name pk_base --display-name pk_base_kernel 
+
+커널 목록 확인하기
+> jupyter kernelspec list
+
+커널 삭제하기
+> jupyter kernelspec uninstall pk_base
+
+기본 라이브러리 설치
+> pip install ipython jupyter matplotlib pandas xlrd seaborn scikit-learn pyarrow
+> pip install openpyxl
+
+지도 시각화 라이브러리
+> pip install folium
+
+
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:::FrontApp - 16_checkBoxView 페이지:::</title>
+    <script type="text/javascript">
+        function goSubmit(){
+            fm = document.getElementById("fm");
+
+            // 지역 입력되었는지 확인
+            if(fm.mem_addr.value == ""){
+                alert("지역을 입력하세요!!");
+                fm.mem_addr.focus();
+                return;
+            }
+
+            // 체크박스가 1개이상 선택이 되어 있는지 확인
+            // checked == true
+            chk = false;
+            for(i=0; i<fm.mem_addr1.length; i++){
+                // 조건 : check된 것이 있는지 확인
+                if(fm.mem_addr1[i].checked == true){
+                    chk = true;
+                }
+            }
+
+            if(chk == false){
+                alert("체크박스를 선택하여 주세요!!");
+                return;
+            }
+
+            fm.action = "/front/17_checkBox/";
+            fm.submit();
+        }
+    </script>
+</head>
+<body>    
+    <h3>FrontApp - 16_checkBoxView 페이지</h3>
+    <hr/>
+    <a href="/front/">[FrontApp 바로가기]</a> 
+    <hr/>
+<form id="fm" name="fm" method="post" action="#">
+    {% csrf_token %}
+
+    * 지역 : <input type="text" name="mem_addr">
+    <br>
+
+    * 지역선택 : 
+        서울<input type="checkbox" name="mem_addr1" value="서울">
+        부산<input type="checkbox" name="mem_addr1" value="부산">
+        대구<input type="checkbox" name="mem_addr1" value="대구">
+        대전<input type="checkbox" name="mem_addr1" value="대전">
+
+    <hr>
+    <input type="button" value="전송하기" onclick="goSubmit()">
+</form>
+</body>
+</html>

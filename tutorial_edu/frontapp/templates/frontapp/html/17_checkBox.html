@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:::FrontApp - 17_checkBox 페이지:::</title>
+    <script type="text/javascript">
+        // 체크박스 셋팅하기
+        function initChechBox(mem_addr_list) {
+            // alert(mem_addr_list);
+            fm = document.getElementById("fm");
+
+            // 체크박스의 갯수 만큼 반복
+            for(i=0; i<fm.mem_addr1.length; i++){
+                // alert(fm.mem_addr1[i].value);
+
+                // 전송받은 리스트의 갯수만큼 반복
+                for(j=0; j<mem_addr_list.length; j++){
+                    // alert(mem_addr_list[j]);
+                    // 체크박스의 각 인덱스 위치의 값과, 전송받은 리스트의 값과 같은 값이 있으면,
+                    //  -> 해당 체크박스의 인덱스 위치를 checked = true로 설정
+                    if(fm.mem_addr1[i].value == mem_addr_list[j]){
+                        fm.mem_addr1[i].checked = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        // 뒤로가기 처리하기
+        function goBack(){
+            history.go(-1);
+        }
+
+        // 전체 초기화하기
+        function goReload(){
+            // form태그 정보 가지고 오기
+            fm = document.getElementById("fm");
+
+            // 지역 입력 초기화
+            fm.mem_addr.value = "";
+
+            // 체크박스 모두 해제하기
+            for(i=0; i<fm.mem_addr1.length; i++){
+                fm.mem_addr1[i].checked = false;
+            }
+        }
+
+    </script>
+</head>
+<!--
+    백엔트에서 넣어준 변수의 타입이 문자열이 아닌경우에는
+     - 파이썬에서 html을 처리하기 위한 특수문자들이 포함됩니다.
+     - 원형 그대로를 사용하고자 할 때는 safe 옵션을 사용합니다.
+       (sefe를 사용하는 특수문자들이 없어집니다. 파이썬에서만 사용됨)
+-->
+<body onload="initChechBox({{mem_addr1 | safe}})">    
+    <h3>FrontApp - 17_checkBox 페이지</h3>
+    <hr/>
+    <a href="/front/">[FrontApp 바로가기]</a> 
+    <hr/>
+<form id="fm" name="fm" method="post" action="#">
+    {% csrf_token %}
+    
+    * 지역 : <input type="text" name="mem_addr" value="{{mem_addr}}">
+    <br>
+    *** 전송받은 지역 체크박스 값 : {{mem_addr1}}
+    <br>
+    * 지역선택 : 
+        서울<input type="checkbox" name="mem_addr1" value="서울">
+        부산<input type="checkbox" name="mem_addr1" value="부산">
+        대구<input type="checkbox" name="mem_addr1" value="대구">
+        대전<input type="checkbox" name="mem_addr1" value="대전">
+    <hr>
+
+    <!-- 초기화 버튼 추가 -->
+    <input type="button" value="전체 초기화" onclick="goReload()">
+
+    <!-- 뒤로가기 버튼 추가 -->
+    <input  type="button" value="뒤로가기" onclick="goBack()">
+</form>
+</body>
+</html>

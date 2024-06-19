@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontApp - 15_radioView Page</title>
+
+    <script type="text/javascript">
+        function goSubmit(){
+            fm = document.getElementById("fm");
+
+            mem_addr = fm.mem_addr.value;
+
+            mem_addr1 = fm.mem_addr1.value;
+            
+            alert(mem_addr1);
+
+            if(mem_addr == ""){
+                alert("지역을 입력하시오.");
+                fm.mem_addr.focus();
+                return;
+            }
+
+            if(mem_addr1 == ""){
+                alert("지역을 입력하시오.");
+                // fm.mem_addr1.focus();
+                return;
+            }
+
+            fm.action = "/front/16_radio/";
+            fm.submit();
+        }
+
+        // radio 버튼 체크 컨트롤 하기
+        function initRadio(mem_addr1){
+            // alert("페이지 실행 시 최초에 호출 시킵니다.");
+            // alert(mem_addr1);
+
+            // radio 버튼 컨트롤 하기(각각의 radio value에 접근하기)
+            fm = document.getElementById("fm");
+
+            // radio 버튼 갯수 확인하기
+            radio_cnt = fm.mem_addr1.length;
+            // alert(radio_cnt);
+
+            for(i=0; i<radio_cnt; i++) {
+                // alert(fm.mem_addr1[i].value);
+                
+                // 조건문
+                if(fm.mem_addr1[i].value == mem_addr1){
+                    // alert(i);
+                    fm.mem_addr1[i].checked = true;
+                    break;
+                }
+            }
+        }
+        // 입력된 내용 전체 초기화 하기
+        function goAllReload(){
+            fm = document.getElementById("fm");
+
+            // 지역 입력 박스 초기화 하기
+            fm.mem_addr.value = "";
+
+            // radio 버튼 테크 해제하기(초기화)]
+            // - 모든 radio의 checked를 false로 하면 됩니다.
+            radio_cnt = fm.mem_addr1.length;
+
+            for(i=0; i<radio_cnt; i++) {
+                fm.mem_addr1[i].checked = false;
+            }
+        }
+
+    </script>
+</head>
+<body onload="initRadio('{{mem_addr1}}')">
+    <h3>FrontApp - 15_radioView Page</h3> 
+    <hr>
+    <p>
+        <a href="/front/">[FrontApp 바로가기]</a>
+    </p>
+
+    <form id="fm" name="fm" method="post" action="#">
+        {% csrf_token %}
+    
+        * 지역 : <input type="text" name="mem_addr" value="{{mem_addr}}">
+        <br>
+        <!--지역 선택 하기 radio 버튼 생성하기
+            -name은 같은 이름을 사용해야 합니다.
+            - value의 값을 정의해야합니다.
+            - radio 버튼은 하나만 선택가능 합니다.
+              선택된 한개의 값이 전송됩니다.
+            HTML이 구성해 높은 데이터 형태 : {"mem_addr" : ["서울", "부산", "대구", "대전"]}
+            - 전송 시점의 데이터 변형 형태 : {"mem_addr1" : "서울"}-->
+
+        * 지역 선택 :
+            서울<input type="radio" name="mem_addr1" value="서울">
+            부산<input type="radio" name="mem_addr1" value="부산">
+            대구<input type="radio" name="mem_addr1" value="대구">
+            대전<input type="radio" name="mem_addr1" value="대전">
+        <hr>
+        <input type="button" value="전송하기" onclick="goSubmit()">
+        <!--전체 초기화 버튼--> 
+        <input type="button" value="전체 초기화" onclick="goAllReload()">
+
+    </form>
+</body>
+</html>

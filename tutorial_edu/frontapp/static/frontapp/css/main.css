@@ -1,0 +1,73 @@
+/*
+    (id=header에 대해서 스타일 적용하기)
+        - 배경색 : 검정
+        - 글자색 : 흰색
+        - 텍스트 정렬 : 중앙
+        - 안쪽 모든 여백 : 5px
+*/
+#header {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+/* id=nav에 대한 스타일 적용
+    - 배경색 : 노랑
+    - 높이 : 30px
+    - 안쪽 모든 여백 : 5px
+    - 글자정렬 : 중앙
+*/
+#nav {
+    background-color: yellow;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* id=section1에 대한 스타일 적용
+    - 배경색 : 원하시는 색상으로
+    - 글자색 : 흰색
+    - 안쪽 모든 여백 : 5px
+    - 너비 : 50%
+*/
+#section1 {
+    background-color: blueviolet;
+    color: white;
+    padding: 5px;
+    width: 49%;
+
+    /* 다음 블럭영역을 옆으로 붙이기 */
+    float: left;
+}
+
+/* id=section2에 대한 스타일 적용
+    - 배경색 : 원하시는 색상으로
+    - 글자색 : 흰색
+    - 안쪽 모든 여백 : 5px
+    - 너비 : 50%
+*/
+#section2 {
+    background-color: brown;
+    color: white;
+    padding: 5px;
+    width: 49%;
+
+    /* 다음 블럭영역을 옆으로 붙이기 */
+    float: left;
+}
+
+
+/* id=footer에 대한 스타일 적용
+    - 배경색 : 아쿠아
+    - 글자 정렬 : 중앙
+    - 안쪽 모든 여백 : 5px
+*/
+#footer {
+    background-color: aqua;
+    text-align: center;
+    padding: 5px;
+
+    /* 블럭 붙이기 해제하기 */
+    clear: both;
+}

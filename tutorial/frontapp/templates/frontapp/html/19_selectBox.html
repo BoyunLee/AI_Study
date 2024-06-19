@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontApp - 19_selectBox Page</title>
+    <script type="text/javascript">
+
+        function initSelectOne(mem_addr_one, mem_addr_multi){
+            fm = document.getElementById("fm");
+
+            selCnt = fm.mem_addr_one.options.length;
+            
+            for(i=0; i<selCnt; i++){
+                // alert(fm.mem_addr_one.options[i].value);
+                if(fm.mem_addr_one.options[i].value == mem_addr_one){
+                    fm.mem_addr_one.options[i].selected = true;
+                    break;
+                }
+            }
+
+        // 전송받은 여러개의 값으로 select box multi 선택하기
+            for(i=0; i<fm.mem_addr_multi.options.length; i++){
+                for(j=0; j<fm.mem_addr_multi.length; j++){
+                    if(fm.mem_addr_multi.options[i].value == mem_addr_multi[j]){
+                        fm.mem_addr_multi.options[i].selected = true;
+                        break;
+                }
+            }
+        }
+    }
+        
+        function goBack(){
+            history.go(-1);
+        }
+
+    </script>
+</head>
+<body onload="initSelectOne('{{mem_addr_one}}', {{mem_addr_multi | safe}})">
+    <h3>FrontApp - 19_selectBox Page</h3> 
+    <hr/>
+    <a href="/front/">[FrontApp 바로가기]</a>
+    <hr/>
+<form id="fm" name="fm" method="post" action="#">
+    {% csrf_token %}
+    * 한개 선택된 값 : "{{mem_addr_one}}"
+    <hr/>
+    * 지역선택(한개만 선택가능) : 
+    <select name="mem_addr_one">
+        <option value="">::::::::::지역을 선택하여 주세요!::::::::::</option>
+        <option value="서울">서울</option>
+        <option value="부산">부산</option>
+        <option value="대구">대구</option>
+        <option value="대전">대전</option>
+    </select>
+    <hr/>
+    * 여러개 선택된 값 : "{{mem_addr_multi}}"
+    <hr/>
+    * 지역선택(여러개 선택가능) : 
+    <select name="mem_addr_multi" multiple>
+        <option value="">::::::::::지역을 선택하여 주세요!::::::::::</option>
+        <option value="서울">서울</option>
+        <option value="부산">부산</option>
+        <option value="대구">대구</option>
+        <option value="대전">대전</option>
+    </select>
+    <hr>
+    <input type="button" value="뒤로가기" onclick="goBack()">
+
+</form>
+</body>
+</html>

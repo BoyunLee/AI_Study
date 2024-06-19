@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MysqlAPP - mem_view Page</title>
+    <script type="text/javascript">
+        // 목록으로 가기 버튼 처리
+        function goList(){
+            // history.go(-1);
+            location.href = "/mysql/mem_list/";
+        }
+
+        // 수정하기 위한 화면으로 페이지 이동시키기
+        //  - 해당 아이디에 대한 정보를 수정해야 하기 때문에
+        //    아이디 정보도 함께 전송해야 합니다.
+        function goUpdateView(){
+            // 사용 페이지 주소 : /mysql/mem_update_view/
+            // get 또는 post 방식 전송
+            // get 방식 전송
+            location.href = "/mysql/mem_update_view/?mem_id={{mem_id}}";
+        }
+    </script>
+</head>
+<body>
+    <h3>회원관리 상세보기</h3>
+    <hr>
+    *** 조회결과 직접 출력해 보기
+    <br>
+     - mem_id = {{mem_id}}
+    <br>
+     - mem_view = {{mem_view}}
+    <hr>
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <td>{{mem_view.mem_id}}</td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td>{{mem_view.mem_name}}</td>
+        </tr>
+        <tr>
+            <th>주소1</th>
+            <td>{{mem_view.mem_add1}}</td>
+        </tr>
+    </table>
+    <hr>
+    <!--
+        * 버튼 만드는 방법 2가지
+         (1번째) form태그 내에 input type=button으로 만드는 방법
+         (2번째) 어느곳에서든지 button 태그로 만드는 방법
+          == 위 두 방법 모두 onclick 이벤트를 통해서 
+             자바스크립트 함수 호출하여 페이지 이동을 합니다.
+    -->
+    <button onclick="goList()">목록으로</button> 
+    <button onclick="goUpdateView()">수정하기</button>
+</body>
+</html>

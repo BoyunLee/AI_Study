@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontApp - 18_selectBoxView Page</title>
+    <script type="text/javascript">
+        function goSubmitOne(){
+            fm = document.getElementById("fm");
+            // alert(fm.mem_addr_one.value);
+            if(fm.mem_addr_one.value == ""){
+                alert("Select Box One이 선택되지 않았습니다.");
+                return;
+            }
+
+            fm.action = "/front/19_selectBox/";
+            fm.submit();
+
+            // /front/19_selectBox/로 전송
+            // 함수명 : selectBox19
+            // html명 : 19_selectBox.html (18_selectBoxView.html 복사하여 사용)
+            // 전송받은 지역값을 html에 출력만 해주세요
+        }
+
+        function goSubmitMulti(){
+            fm = document.getElementById("fm");
+            // 한개 선택 select box 선택되었는지 확인
+            if(fm.mem_addr_one.value == ""){
+                alert("Select Box One이 선택되지 않았습니다.");
+                return;
+            }
+
+            // 여러개 선택 select box에서 한개 이상 선택되었는지 확인
+            chk = false;
+            for(i=0; i<fm.mem_addr_multi.options.length; i++){
+                if(fm.mem_addr_multi.options[i].value!= "" & fm.mem_addr_multi.options[i].selected == true){
+                        chk = true;
+                }
+            }
+
+            if (chk == false){
+                alert("Select Box Multi가 선택되지 않았습니다.");
+                return;
+            }
+
+            // 모두 선택 되었으면 /front/19_selectBox/ 이곳으로 전송
+            fm.action = "/front/19_selectBox/";
+            fm.submit();
+            
+
+        }
+
+    </script>
+</head>
+<body>
+    <h3>FrontApp - 18_selectBoxView Page</h3> 
+    <hr/>
+    <a href="/front/">[FrontApp 바로가기]</a>
+    <hr/>
+<form id="fm" name="fm" method="post" action="#">
+    {% csrf_token %}
+    <!--select box(선택 박스)
+        - input type을 사용하지 않습니다.
+        - select 태그가 별도로 존재합니다.-->
+    <!--한개만 선택가능한 select box 생성하기-->
+    * 지역선택(한개만 선택가능) : 
+    <select name="mem_addr_one">
+        <option value="">::::::::::지역을 선택하여 주세요!::::::::::</option>
+        <option value="서울">서울</option>
+        <option value="부산">부산</option>
+        <option value="대구">대구</option>
+        <option value="대전">대전</option>
+    </select>
+
+    <hr>
+    * 지역선택(여러개 선택가능) : 
+    <select name="mem_addr_multi" multiple>
+        <option value="">::::::::::지역을 선택하여 주세요!::::::::::</option>
+        <option value="서울">서울</option>
+        <option value="부산">부산</option>
+        <option value="대구">대구</option>
+        <option value="대전">대전</option>
+    </select>
+    <hr/>
+    <input type="button" value="[한개 선택 전송]" onclick="goSubmitOne()">
+    <input type="button" value="[여러개 선택 전송]" onclick="goSubmitMulti()">
+
+
+</body>
+</html>

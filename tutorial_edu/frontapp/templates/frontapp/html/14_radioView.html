@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:::FrontApp - 14_radioView 페이지:::</title>
+    <script type="text/javascript">
+        // 서버로 페이지 이동하면서, 사용자가 입력한 데이터 전송시키기
+        function goSubmit(){
+            // alert("goSubmit() 함수 잘 호출됩니다.");
+
+            // form 태그의 정보 가지고 오기
+            fm = document.getElementById("fm");
+            mem_addr = fm.mem_addr.value;
+            mem_addr1 = fm.mem_addr1.value;
+
+            // alert(mem_addr1);
+
+            //alert(mem_addr);
+            // 지역 입력되었는지 확인하기
+            if(mem_addr == ""){
+                // 경고창 띄어주기
+                alert("지역을 입력하여 주세요!!");
+                // 포커스 이동시키기
+                fm.mem_addr.focus();
+                return;
+            }
+
+            if(mem_addr1 == ""){
+                // 경고창 띄어주기
+                alert("지역을 선택하여 주세요!!");
+                // 포커스 이동시키기
+                // fm.mem_addr1.focus();
+                return;
+            }
+            // alert("지금까지 잘 실행됨...")
+
+            // 전송시키기
+            // form 정보가 이동할 페이지 주소 입력하기
+            fm.action = "/front/15_radio/";
+
+            // form태그 내에 name의 정보를 서버로 전송시키기
+            // - form태그 내에 속성의 method(전송방식)에 따라서 전송됩니다.
+            fm.submit();
+        }
+
+        // 전체 초기화하기
+        function goAllReload(){
+            // 새로고침 기능 추가하기
+            location.reload();
+        }
+    </script>
+</head>
+<body>    
+    <h3>FrontApp - 14_radioView 페이지</h3>
+    <hr/>
+    <a href="/front/">[FrontApp 바로가기]</a> 
+    <hr/>
+<form id="fm" name="fm" method="post" action="#">
+    <!--post 전송방식인 경우에 아래 추가-->
+    {% csrf_token %}
+
+    <!-- 지역 입력 받기 -->
+    * 지 역 : <input type="text" name="mem_addr" value="">
+
+    <br>
+    <!-- 지역 선택 하기 radio 버튼 생성하기
+         - name은 같은 이름을 사용해야 합니다.
+         - value의 값을 정의해야 합니다.
+         - radio버튼은 하나만 선택가능 합니다.
+           선택된 한개의 값이 전송됩니다. -->
+    * 지역선택 : 
+        서울<input type="radio" name="mem_addr1" value="서울">
+        부산<input type="radio" name="mem_addr1" value="부산">
+        대구<input type="radio" name="mem_addr1" value="대구">
+        대전<input type="radio" name="mem_addr1" value="대전">
+
+    <hr>
+    <!-- 전송 버튼 -->
+    <input type="button" value="전송하기" onclick="goSubmit()">
+
+    <!-- 전체 초기화 버튼 -->
+    <input type="button" value="전체 초기화" onclick="goAllReload()">
+</form>
+</body>
+</html>

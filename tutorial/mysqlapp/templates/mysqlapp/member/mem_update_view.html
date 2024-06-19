@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MysqlApp - mem_update_view Page</title>
+    <script type="text/javascript">
+        function goBack(){
+            history.go(-1);
+        }
+        function goUpdate(){
+            // alert("함수 잘 호출됩니다.")
+            fm = document.getElementById("fm");
+
+            // url 지정
+            fm.action = "/mysql/mem_update/";
+            fm.submit();
+        }
+    </script>
+</head>
+<body>
+<form id="fm" name="fm" method="post" action="#">
+    <input type="hidden" name="mem_id" value="{{mem_id}}">
+    {% csrf_token %}
+
+    <h3>회원관리 수정하기</h3>
+    <hr>
+     - mem_id = {{mem_id}}
+    <hr>
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <td>{{mem_view.mem_id}}</td>
+        </tr>
+        <tr>
+            <th>비밀번호</th>
+            <td><input type="text" name="mem_pass" value="{{mem_view.mem_pass}}"></td>
+        </tr>
+        <tr>
+            <th>이름</th>
+            <td>{{mem_view.mem_name}}</td>
+        </tr>
+        <tr>
+            <th>주소1</th>
+            <td><input type="text" name="mem_add1" value="{{mem_view.mem_add1}}"></td>
+        </tr>
+    </table>
+    <hr>
+    <input type="button" value="취소" onclick="goBack()">
+    <input type="button" value="수정 처리" onclick="goUpdate()">
+</form>
+</body>
+</html>

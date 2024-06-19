@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MysqlAPP - cart_insert_view Page</title>
+    <script type="text/javascript">
+        //취소처리 버튼 처리
+        function goBack(){
+            history.go(-1);
+        }
+
+        // 저장하기 위한 페이지 이동시키기
+        function goInsert(){
+            fm = document.getElementById("fm");
+
+            // 입력값 확인하기
+            if(fm.cart_no.value == ""){
+                alert("주문번호를 입력하여 주세요!!!");
+                fm.cart_no.focus();
+                return;
+            }
+            if(fm.cart_member.value == ""){
+                alert("주문자 아이디를 입력하여 주세요!!!");
+                fm.cart_member.focus();
+                return;
+            }
+            if(fm.cart_prod.value == ""){
+                alert("주문 상품번호를 입력하여 주세요!!!");
+                fm.cart_prod.focus();
+                return;
+            }
+            if(fm.cart_qty.value == ""){
+                alert("주문수량을 입력하여 주세요!!!");
+                fm.cart_qty.focus();
+                return;
+            }
+
+            fm.action = "/mysql/cart_insert/";
+            fm.submit();
+        }
+    </script>
+</head>
+<body>
+<form id="fm" name="fm" method="post" action="#">
+    {% csrf_token %}
+
+    <h3>주문내역/장바구니 관리 주문내역 등록(입력) 화면</h3>
+    <hr>    
+    <table border="1">
+        <tr>
+            <th>주문 번호</th>
+            <td><input type="text" name="cart_no"></td>
+        </tr>
+        <tr>
+            <th>주문자 아이디</th>
+            <td><input type="text" name="cart_member"></td>
+        </tr>
+        <tr>
+            <th>주문 상품번호</th>
+            <td><input type="text" name="cart_prod"></td>
+        </tr>
+        <tr>
+            <th>주문 수량</th>
+            <td><input type="text" name="cart_qty"></td>
+        </tr>
+    </table>
+    <hr>
+    <input type="button" value="취소" onclick="goBack()">
+    <input type="button" value="저장하기" onclick="goInsert()">
+</form>
+</body>
+</html>

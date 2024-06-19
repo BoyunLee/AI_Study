@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontApp - Bootstrap</title>
+    <!--Bootstrap CSS 적용하기 : 가장 상단에 적용-->
+    <link rel="stylesheet"
+            href="{% static 'frontapp/bootstrap/css/bootstrap.min.css' %}">
+
+    <!--jQuery 자바스크립트 적용하기-->
+    <script type="text/javascript"
+            src="{% static 'frontapp/js/jquery-3.7.0.min.js' %}"></script>
+</head>
+<body>
+    <h3>FrontApp - Bootstrap</h3>
+    <p>
+        <a href="/front/">[FrontApp-Index 바로가기]</a>
+    </p>
+    <hr>
+
+    <p>
+        <부트스트랩(Bootstrap)><br>
+         - 화면에 스타일과 기본적인 자바스크립 코드를 이용해서 코드를 제공해주는 라이브러리(사이트)<br>
+         - 부트스트랩 사이트에서 다양한 완성된 코드들을 제공하고 있으며, 코드를 복사하여 사용가능<br>
+         - 코드를 사용하기 위해서는 사용할 HTML 파일 내에,
+           부트스트랩에서 사용하는 .css 및 .js 파일 환경을 맞춰주어햐 함<br>
+         - css와 js 파일은 부트스트랩 사이트에서 제공하고 있으며, 추가로 jquery.js 함께 받아야함
+         <br>
+         * 부트스트랩 접속 : https://getbootstrap.com
+         <br>
+         * jQuery 접속 URL : https://jquery.com/download
+    </p>
+
+    <p class="h3">
+        <부트스트랩(Bootstrap) 적용><br>
+         - 화면에 스타일과 기본적인 자바스크립 코드를 이용해서 코드를 제공해주는 라이브러리(사이트)<br>
+         - 부트스트랩 사이트에서 다양한 완성된 코드들을 제공하고 있으며, 코드를 복사하여 사용가능<br>
+         - 코드를 사용하기 위해서는 사용할 HTML 파일 내에,
+           부트스트랩에서 사용하는 .css 및 .js 파일 환경을 맞춰주어햐 함<br>
+         - css와 js 파일은 부트스트랩 사이트에서 제공하고 있으며, 추가로 jquery.js 함께 받아야함
+         <br>
+         * 부트스트랩 접속 : https://getbootstrap.com
+         <br>
+         * jQuery 접속 URL : https://jquery.com/download
+    </p>
+
+    <!--Bootstrap 자바스크립트 적용하기 : 보통 가장 하단에 적용-->
+    <script type="text/javascript"
+            src="{% static 'frontapp/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

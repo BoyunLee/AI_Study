@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontApp - 09_table Page</title>
+    <style>
+        /* 테이블 테두리 스타일 적용하기 */
+        table {
+            border: 5px solid black;
+
+            /* 테두리 선을 한줄로 바꾸기 */
+            border-collapse: collapse ;
+        }
+
+        th, td{
+            /* 안쪽 여백 주기 순서 : 위, 오, 아래, 왼 
+            padding: 0px 0px 0px 0px; 
+            주기 순서 : 상하, 좌우
+            padding: 0px 0px;
+            주기 순서 : 모두
+            padding: 0px; */
+            padding: 15px 15px;
+
+            /* 텍스트 가운데 정렬 */
+            text-align: center;
+        }
+
+        .td_left{
+            text-align: left;
+        }
+
+        /* 제목이 있는 부분을 모두 노랑색 배경으로 처리하기 */
+        th{background-color: yellow;}
+    </style>
+
+</head>
+<body>
+    <h3>FrontApp - 09_table Page</h3> 
+    <hr/>
+    <p>
+        <a href="/front/">[FrontApp 바로가기]</a>
+    </p>
+    <hr/>
+    <!--
+        [table 만들기]
+        - table : 행/열을 표현하는 표 태그
+        - tr: 행 영역을 표현하는 태그
+            - th : 각 열의 제목을 표현하는 태그
+            - td : 각 열의 내용을 표현하는 태그
+    -->
+    <p>
+        {{mem_id}}({{mem_name}} / {{mem_area}})님 환영합니다.
+    </p>
+    <table border="1">
+        <!--테이블의 첫번째 행은 주로 각 열의 제목을 작성합니다-->
+        <tr>
+            <th width="50">아이디</th>
+            <th width="200">이름</th>
+            <th width="300">주소</th>
+        </tr>
+        <!--행이 여러개인 행렬 데이터인 경우에는 반복문을 이용하여 출력합니다-->
+        {% for d in mem_list %}
+            <tr>
+                <td>{{d.mem_id}}</td>
+                <td>{{d.mem_name}}</td>
+                <td class="td_left">{{d.mem_area}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

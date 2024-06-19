@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MysqlAPP - cart_view Page</title>
+    <script type="text/javascript">
+        // 목록으로 가기 버튼 처리
+        function goList(){
+            // history.go(-1);
+            location.href = "/mysql/cart_list/";
+        }
+
+        // 수정하기 위한 화면으로 페이지 이동시키기
+        function goUpdateView(){
+            url = "/mysql/cart_update_view/";
+            url += "?cart_no={{cart_no}}";
+            url += "&cart_prod={{cart_prod}}"
+            location.href = url;
+        }
+
+        // 삭제하기 버튼 처리        
+        function goDelete(){
+            //alert("ok");
+            // 삭제할건지 말건지 물어보기
+            if(confirm("정말로 삭제하시겠어요???")){
+                url = "/mysql/cart_delete/";
+                url += "?cart_no={{cart_no}}";
+                url += "&cart_prod={{cart_prod}}"
+                
+                // alert(url);
+                location.href = url;
+
+            }else{
+                alert("삭제 안해요!!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>주문내역/장바구니 관리 상세보기</h3>
+    <hr>    
+    <table border="1">
+        <tr>
+            <th>주문 번호</th>
+            <td>{{cart_view.cart_no}}</td>
+        </tr>
+        <tr>
+            <th>주문자 아이디</th>
+            <td>{{cart_view.cart_member}}</td>
+        </tr>
+        <tr>
+            <th>주문 상품번호</th>
+            <td>{{cart_view.cart_prod}}</td>
+        </tr>
+        <tr>
+            <th>주문 수량</th>
+            <td>{{cart_view.cart_qty}}</td>
+        </tr>
+    </table>
+    <hr>
+    <!--
+        * 버튼 만드는 방법 2가지
+         (1번째) form태그 내에 input type=button으로 만드는 방법
+         (2번째) 어느곳에서든지 button 태그로 만드는 방법
+          == 위 두 방법 모두 onclick 이벤트를 통해서 
+             자바스크립트 함수 호출하여 페이지 이동을 합니다.
+    -->
+    <button onclick="goList()">목록으로</button> 
+    <button onclick="goUpdateView()">수정하기</button>
+    <button onclick="goDelete()">삭제하기</button>
+</body>
+</html>

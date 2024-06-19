@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MysqlAPP - Index Page</title>
+</head>
+<body>
+    <h3>MysqlAPP - Index Page</h3>
+    
+    <hr>
+    * 세션에 저장된 ID : {{ request.session.ses_mem_id }}
+    <hr>
+
+    <p>
+        <a href="/">[MainApp] 바로가기</a>
+    </p>
+    <hr>
+    
+    <a href="/mysql/mem_list/">[mem_list 바로가기]</a>
+    <br>
+    <a href="/mysql/cart_list/">[cart_list 바로가기]</a>
+    <br>    
+    <a href="/mysql/cart_list_page/">[cart_list_page 바로가기]</a>
+    <br>
+    <a href="/mysql/login_logout_view/">[login_logout_view 바로가기]</a>
+    <br>
+</body>
+</html>

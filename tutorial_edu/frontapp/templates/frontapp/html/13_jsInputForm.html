@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:::FrontApp - 13_jsInputForm 페이지:::</title>
+
+    <script type="text/javascript">
+        /*
+            (POST전송 방식)
+             - url 주소 뒤에 물음표(?) 없이 전송되는 방식
+             - form태그에 의해 내부적으로 데이터가 전송되는 방식입니다.
+
+            (GET전송 방식)
+             - url 주소 뒤에 물음표(?)가 있으며,
+             - 전송되는 데이터들이 모두 key=value의 형태로 url주소창에 보입니다.
+        */
+        
+        // post 전송방식 처리
+        function goLogin(){
+            // 함수 잘 호출되는지 먼저 확인하기
+            // alert("goLogin()함수 잘 호출됩니다.");
+
+            // form태그 내에 아이디와 패스워드가 입력되었는지 확인해보기
+            //  - 보통 필수입력 데이터인 경우에 확인합니다.
+
+            // 1. form 태그에 접근하기 : id로 접근
+            //  - document : 현재 html 문서를 의미합니다.
+            //  - getElementById() : 현재 html 문서 내에서 id 이름이 fm인 태그 정보를 받아오기
+            //  - 클래스라고 생각하시면 프로그램 문법 이해가 빨라집니다.
+            fm = document.getElementById("fm");
+
+            // text박스의 값 출력해 보기
+            // fm 폼태그 내부에 접근할 때는 점(.)으로 접근
+            // fm 폼태그 내부의 name의 값이 변수명이라고 생각하시면 됩니다.
+            mem_id = fm.mem_id.value;
+            mem_pass = fm.mem_pass.value;
+            //alert(mem_id);
+
+            // form태그 내에 입력받은 모든 값들은 문자열 타입이라고 생각하시면 됩니다.
+            // - 전송될 때는 모두 문자열 타입으로 전송됩니다.
+            if(mem_id == ""){
+                alert("바부~~아이디 입력해야지~~!!");
+                // 입력이 안된 곳에 커서 위치 시키기
+                fm.mem_id.focus();
+                // 아래 내용 더이상 처리 안되게 리턴
+                return;
+            }            
+
+            if(mem_pass == ""){
+                alert("바부~패스워드 입력해야지~~!!");
+                // 입력이 안된 곳에 커서 위치 시키기
+                fm.mem_pass.focus();
+                // 아래 내용 더이상 처리 안되게 리턴
+                return;
+            }
+
+            // alert("모두 입력 되었습니다.!!");
+            // location.href = "/front/?mem_id=a001";
+
+            // 전송 url 정의하기 : 폼태그의 action 속성을 컨트롤 가능합니다.
+            fm.action = "/front/14_jsInputCheck/";
+
+            // 전송 url로 실제 전송 시키기
+            /*
+                전송 시 "CSRF 검증에 실패했습니다. 요청을 중단하였습니다." 메시지가 화면에 보이는 경우..
+                 - form태그 밑에 csrf 보안인증을 처리해 주어야 합니다.
+                 - 파이썬의 경우 post방식으로 전송시에는 보안인증을 Django서버에서 체크합니다.
+                 - 서버와의 연결이 이루졌다는 인증키를 주고 받는 방식으로 사용됩니다.
+                 - form 태그 밑에 {% csrf_token %} 이라고 정의해 주어야 합니다.
+                 - post 전송방식인 경우에만 해당됩니다.
+            */
+            fm.submit();
+
+        }
+
+        // GET 방식으로 전송 처리
+        function goLoginGet(){
+            // 폼태그 정보 가지고 오기
+            fm = document.getElementById("fm");
+
+            // 아이디/패스워드의 value값 추출하기
+            mem_id   = fm.mem_id.value;
+            mem_pass = fm.mem_pass.value;
+
+            // 아이디 입력되었는지 확인하기
+            if(mem_id == ""){
+                alert("아이디를 입력하여 주세요");
+                fm.mem_id.focus();
+                return;
+            }
+            // 패스워드 입력되었는지 확인하기
+            if(mem_pass == ""){
+                alert("패스워드를 입력하여 주세요.");
+                fm.mem_pass.focus();
+                return;
+            }
+
+            // 정상 입력된 경우 GET방식으로 전송하기
+            // - GET방식은 url 뒤에 물음표(?)을 이용해서
+            //   전송할 name=value, 즉 key=value형태로 url을 완성합니다.
+            //   전송할 name(key)가 많은 경우 &기호로 구분하여 작성합니다.
+            // ** 띄어쓰기 하시면 안됩니다.**
+            url = "/front/14_jsInputCheck/";
+            url += "?mem_id=" + mem_id;
+            url += "&mem_pass=" + mem_pass;
+
+            // alert(url);
+            /*
+                - location : 어디로 보낼지에 대한 객체
+                - href     : 경로 지정 속성
+                - url      : 경로 값
+            */
+            location.href = url;
+        }
+    </script>
+</head>
+<body>    
+    <h3>FrontApp - 13_jsInputForm 페이지</h3>
+    <hr/>
+    <a href="/front/">[FrontApp 바로가기]</a> 
+    <hr/>
+    <!--
+        (javascript form 태그 사용)
+         - 사용자로부터 데이터의 입력을 받기위한 태그를 form태그라고 합니다.
+         - 웹프로그램 필수 사항
+         - 프로그래머 담당 영역으로 입력에 대한 처리를 수행합니다.
+         - form 태그 내에 입력을 위한 다양한 태그를 이용합니다.
+         - 입력태그 : input, textarea
+         - 이벤트 태그(서버 전송) : button, a 등등
+         - 입력을 위한 속성 : text, radiobutton, checkbox, selectbox
+         - 사용자로부터 입력된 모든 데이터를 서버로 전송할 때 사용됩니다.
+         - 전송되는 방식은 key=value 형태의 딕셔너리 형태로 서버로 전송됨
+         - 입력태그에는 name 속성을 지정하게 되며, 입력받은 값은 value 속성에 저장됩니다.
+         - 입력된 태그의 데이터가 서버로 전송될 때는 name의 값은 key로, 
+                                                  value의 값은 key에 대한 value로 전송됩니다.
+         - 데이터를 서버로 전송할 때는 전송방식을 지정해야 합니다.
+           * 전송방식 : POST, GET 두가지 방식을 사용하게되며, 서버에서는 request로 받습니다.
+           * 백엔드 프로그램(views.py)에서 request에 담겨진 사용자 정보를 추출하여 사용하게 됩니다.
+             -> 전송된 방식(Post or Get)에 따라서 정보를 추출하게 됩니다.
+    -->
+<!--
+    - method : 전송방식
+    - action : a태그의 href속성과 같음 (이동할 페이지 경로 지정)
+-->
+<form id="fm" name="fm" method="post" action="#">
+    {% csrf_token %}
+
+    * 아 이 디 : <input type="text" name="mem_id" value="">
+    <br>
+    * 패스워드 : <input type="password" name="mem_pass" value="">
+
+    <hr>
+    <!-- value : 버튼에 쓰여질 문자(화면에 보여질 텍스트)
+         onclick : 마우스 클릭 이벤트 처리(클릭이 되면 수행할 내용 처리)
+                 : 자바스크립트 이벤트로 자바스크립트 프로그램으로 처리합니다.
+                 : 보통 자바스크립트 함수 호출 방식을 이용해서 사용합니다.
+    -->
+    <input type="button" value="로그인(전송방식-post)" onclick="goLogin()">
+    <input type="button" value="로그인(전송방식-get)" onclick="goLoginGet()">
+</form>
+</body>
+</html>

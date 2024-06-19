@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MysqlAPP - cart_update_view Page</title>
+    <script type="text/javascript">
+        //취소처리 버튼 처리
+        function goBack(){
+            history.go(-1);
+        }
+
+        // 수정하기 위한 화면으로 페이지 이동시키기
+        function goUpdate(){
+            fm = document.getElementById("fm");
+            fm.action = "/mysql/cart_update/";
+            fm.submit();
+        }
+    </script>
+</head>
+<body>
+<form id="fm" name="fm" method="post" action="#">
+    <input type="hidden" name="cart_no" value="{{cart_no}}">
+    <input type="hidden" name="cart_prod" value="{{cart_prod}}">
+    {% csrf_token %}
+
+    <h3>주문내역/장바구니 관리 수정하기 화면</h3>
+    <hr>    
+    <table border="1">
+        <tr>
+            <th>주문 번호</th>
+            <td>{{cart_view.cart_no}}</td>
+        </tr>
+        <tr>
+            <th>주문자 아이디</th>
+            <td>{{cart_view.cart_member}}</td>
+        </tr>
+        <tr>
+            <th>주문 상품번호</th>
+            <td>{{cart_view.cart_prod}}</td>
+        </tr>
+        <tr>
+            <th>주문 수량</th>
+            <td><input type="text" name="cart_qty" value="{{cart_view.cart_qty}}"></td>
+        </tr>
+    </table>
+    <hr>
+    <input type="button" value="취소" onclick="goBack()">
+    <input type="button" value="수정하기" onclick="goUpdate()">
+</form>
+</body>
+</html>

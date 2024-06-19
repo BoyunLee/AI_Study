@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontApp - 10_ul Page</title>
+
+    <style>
+        /* 모든 ul 태그에 스타일 적용하기 */
+        ul {
+            /* 표식 사용하지 않기 설정 
+            list-style-type: none; */
+
+            /* 채워진 사각형으로 표식 설정 
+            list-style-type: square; */
+
+            /* 채워진 원으로 표식 설정 
+            list-style-type: disc; */
+
+            /* 채워진 원으로 표식 설정 
+            list-style-type: disc; */
+            list-style-type: disc;
+        }
+        /* ul 태그 중에 class 이름이 menu인 태그를 찾아서 
+        해당 태그 내에 있는 li 태그를 지정합니다. */
+        ul.menu li {
+            /* 수직목록을 수평목록으로 만들기(표식기호가 사라짐) */
+            display: inline;
+        }
+
+        ul.menu li a{
+            background-color: black;
+            color: white;
+            padding: 10px 20px ;
+
+            /* a태그의 밑줄 제거 */
+            text-decoration: none;
+
+            /* 사각형 모서리 라운드 넣기 
+            위오 위왼 아오 아왼*/
+            border-radius: 10px 10px 10px 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <h3>FrontApp - 10_ul Page</h3> 
+    <hr/>
+        <a href="/front/">[FrontApp 바로가기]</a>
+    <hr/>
+
+    <h3>UL / OL / DL 처리하기(표식기호 또는 번호)</h3>
+    <hr/>
+
+    <h5>UL(Unordered List) : 표식(기호) 표시</h5>
+    <!--표식 기호를 이용해서 목록 형태를 생성할 수 있음
+    - ul : 표식기호를 시작하겠다는 시작 태그
+    - li : 실제 시호를 표시할 태그(목록을 의미함)-->
+    <ul>
+        <li>커피</li>
+        <li>차</li>
+        <li>우유</li>
+    </ul>
+
+    <hr/>
+    <h5>OL(Ordered List) : 번호 또는 알파벳을 이용하여 목록 표시</h5>
+    <!--번호로 목록 표시-->
+    <ol>
+        <li>커피</li>
+        <li>차</li>
+        <li>우유</li>
+    </ol>
+    <ol type="1">
+        <li>커피</li>
+        <li>차</li>
+        <li>우유</li>
+    </ol>
+    <!--알파벳 대문자로 목록 표시-->
+    <ol type="A">
+        <li>커피</li>
+        <li>차</li>
+        <li>우유</li>
+    </ol>
+    <!--알파벳 소문자로 목록 표시-->
+    <ol type="a">
+        <li>커피</li>
+        <li>차</li>
+        <li>우유</li>
+    </ol>
+    <!--로마자 대문자로 목록 표시-->
+    <ol type="I">
+        <li>커피</li>
+        <li>차</li>
+        <li>우유</li>
+    </ol>
+    <!--로마자 소문자로 목록 표시-->
+    <ol type="i">
+        <li>커피</li>
+        <li>차</li>
+        <li>우유</li>
+    </ol>
+
+    <!--목록/제목/설명 표시
+        - DL : 목록
+        - DT : 제목
+        - DD : 설명-->
+    <dl>
+        <dt>커피</dt>
+            <dd>- 아메리카노, 밀크라떼, 바닐라라떼</dd>
+        <dt>우유</dt>
+            <dd>- 딸기우유, 초코우유, 바나나우유</dd>
+    </dl>
+
+    <hr/>
+    <!--UL 표식기호 중첩사용 : 주로 많이 사용되는 방식(메뉴 구성 시 주로 사용됨)-->
+    <ul>
+        <li>커피
+            <ul>
+                <li>아메리카노</li>
+                <li>밀크라떼</li>
+                <li>고구마라떼
+                    <ul>    
+                        <li>바닐라라떼</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>차
+            <ul>
+                <li>유자차</li>
+                <li>대추차</li>
+                <li>홍삼차</li>
+            </ul>
+        </li>
+        <li>우유
+            <ul>
+                <li>딸기우유</li>
+                <li>초코우유</li>
+                <li>바나나우유</li>
+            </ul>
+        </li>
+    </ul>
+
+    <hr/>
+    <!--UL을 이용하여 링크목록 만들기-->
+    <ul class="menu">
+        <li><a href="/front/">HOME 바로가기</a></li>
+        <li><a href="/front/02_link/">02_link 바로가기</a></li>
+        <li><a href="/front/07_table/">07_table 바로가기</a></li>
+        <li><a href="/front/09_table/">09_table 바로가기</a></li>
+    </ul>
+</body>
+</html>

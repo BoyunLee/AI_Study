@@ -1,0 +1,103 @@
+<!--
+    - settings.py의 정의 속성을 읽어들여서 사용하게 됨
+    - 중괄호 사이에 퍼센트로 시작하는 문법은 내에서 
+       파이썬 프로그램을 작성하겠다는 의미임
+    - 중괄호와 퍼센트는 띄어쓰기 하시면 안됩니다.
+-->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontApp - 02_link Page</title>
+    <!--자바스크립트 영역 생성하기
+    * type : text 형태로 자바스크립트 코드를 작성하겠다는 의미입니다.
+            : text 형태로 작성된 코드를 자바스크립트 라이브러리로 해석시킵니다.
+            : 자바스크립트 라이브러리는 브라우저내에 있으며, 우리는 관여하지 않아도 됩니다.-->
+    <script type="text/javascript">
+        // 자바스크립트 주석
+        /*
+          여러줄 주석
+        */
+        // 함수생성
+        function linkView(){
+            // 메세지 팝업창 띄우기
+            // 자바스크립트 함수 호출방식으로 처리하는 경우에는 함수가 잘 호출되는지 확인을 위해 아래 alert()를 한번 정도 확인합니다.
+            // 브라우저에서 오류를 발생하지 않습니다.
+            alert("linkView 함수 잘 호출되네요")
+
+            // 페이지 전환하기 
+            location.href = 'https://www.daum.net';
+        }
+
+        function linkViewParam(url){
+            alert("linkViewParam 함수 잘 호출되네요")
+
+            // 페이지 전환하기 
+            location.href = url;
+        }
+    </script>
+</head>
+<body>
+    <h3>FrontApp - 02_link Page</h3> 
+    <hr/>
+    <p>
+        <a href="/front/">[FrontApp 바로가기]</a>
+        <hr/>
+        * Naver : <a href="https://www.naver.com/">[바로가기]</a>
+        <br/>
+        * Daum : <a href="https://www.daum.net/">[바로가기]</a>
+    </p>
+    <p>
+        * a태그 링크 방응하지 않게 하기 : <a href = ''>반응할까?</a>
+    </p>
+    <p>
+        <a href = 'javascript:location.href="https://www.daum.net/";'>
+            Javascript 프로그램으로 페이지 전환 처리하기(다음바로가기)
+        </a>
+        <br/>
+        <!--
+            자바스크립트 함수 생성
+            - head 영역에 자바스크립트 영역을 만든 다음
+               (body 영역 내에 만들어도 됩니다. 주로 head에 만들어서 사용하는 편입니다.)
+            - 해당 영역에 자바스크립트 프로그램을 작성합니다.
+            - 변수선언, 함수생성가능    
+        -->
+        <a href = 'javascript:linkView();'>
+            Javascript 영역에 함수를 생성하여 호출 방식으로 페이지 전환 처리하기(다음바로가기)
+        </a>
+        <br/>
+        <a href = 'javascript:linkViewParam("https://www.daum.net/");'>
+            Javascript 함수에 url을 넘겨서 처리하기(다음바로가기)
+        </a>
+        <br/>
+        <a href = 'javascript:linkViewParam("https://www.naver.com/");'>
+            Javascript 함수에 url을 넘겨서 처리하기(네이버바로가기)
+        </a>
+        <hr/>
+        <!--
+            이미지 추가하기
+            - 이미지는 정적 파일로 정적 폴더 환경설정에 맞게 폴더를 만들어야합니다.
+            (html 폴더 영역을 만드는 것과 동일합니다.)
+            - static\frontapp\ 폴더를 생성해야합니다.           
+        -->
+        <!--이미지 태그 img-->
+        <img src="/static/frontapp/images/dog.jpg" />
+        <img src="/static/frontapp/images/dog.jpg"
+                width='500' height='400' />
+        <a href="/front/">
+            <img src="/static/frontapp/images/dog.jpg"
+                width='100' height='70' /></a>
+            <!--
+                Django 프레임워크 기반의 static 경로지정
+                - html 문서 가장 상단에 : load static 정의
+                - src 경로에는 static 속성을 사용하여 정의
+            -->    
+                <img src="{% static 'frontapp/images/dog.jpg' %}"
+                width='500' height='400' />
+    </p>
+
+</body>
+</html>

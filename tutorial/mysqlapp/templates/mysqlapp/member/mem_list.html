@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MysqlApp - mem_list Page</title>
+</head>
+<body>
+    <h3>회원관리 목록</h3>
+    <hr>
+    <p>
+        <a href="/mysql/">[MysqlApp] 바로가기</a>
+    </p>
+    <hr>
+    *** 조회결과 직접 출력해 보기 : {{mem_list}}
+    <hr>
+    <!--회원 목록 테이블-->
+    <table border="1">
+        <!--제목이 들어가는 tr행-->
+        <tr>
+            <th>아이디</th>
+            <th>비밀번호</th>
+            <th>이름</th>
+            <th>주소1</th>
+        </tr>
+        <!--DB에서 가져온 회원 정보가 들어갈 tr행-->
+        {% for dict in mem_list %}
+            <tr>
+                <td><a href="/mysql/mem_view/?mem_id={{dict.mem_id}}">{{ dict.mem_id }}</a></td>
+                <td>{{ dict.mem_pass }}</td>
+                <td>{{ dict.mem_name }}</td>
+                <td>{{ dict.mem_add1 }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

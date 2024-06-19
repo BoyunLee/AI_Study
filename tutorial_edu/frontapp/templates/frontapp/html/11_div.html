@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:::FrontApp - 11_div 페이지:::</title>
+
+    <style>
+        /* div 전체에 대하서 스타일 적용하기 */
+        div {
+            /* 블록영역 안쪽 모든 여백을 20px씩 적용하기 */
+            padding: 20px;
+            /* 블록영역 바깥쪽 모든 여백을 20px씩 적용하기 */
+            margin: 20px;
+        }
+
+        /*
+            - 블록1과 블록3은 배경색 : 노랑, 글자색 : 파랑으로
+            - 블록2와 블록4는 배경색 : 파랑, 글자색 : 흰색으로
+        */
+        div.div13 {
+            background-color: yellow;
+            color: blue;
+        }
+
+        div.div24 {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <h3>FrontApp - 11_div 페이지</h3>
+    <hr/>
+    <a href="/front/">[FrontApp 바로가기]</a> 
+    <hr/>
+    
+    <!--
+        (DIV 태그)
+         - 영역을 만들 때 사용하는 태그(블록 영역)
+         - 특정 블럭 영역을 설정 할 뿐, 다른 기능은 없습니다.
+         - 주로 스타일 시트에서 영역에 대한 스타일 지정 시 사용
+         - 보통 레이어 구성(화면 구성) 시에 사용되는 경우가 많음
+         - 매우 많이 사용되는 태그임
+    -->
+
+    <div class="div13">
+        <h5>div 블록-1</h5>
+        <p>
+            오늘은 금요일 이네요...^-^ <br/>
+            주말 잘 쉬어요~~~~!!!
+        </p>
+    </div>
+    <div class="div24">
+        <h5>div 블록-2</h5>
+        <p>
+            오늘은 금요일 이네요...^-^ <br/>
+            주말 잘 쉬어요~~~~!!!
+        </p>
+    </div>
+    <div class="div13">
+        <h5>div 블록-3</h5>
+        <p>
+            오늘은 금요일 이네요...^-^ <br/>
+            주말 잘 쉬어요~~~~!!!
+        </p>
+    </div>
+    <div class="div24">
+        <h5>div 블록-4</h5>
+        <p>
+            오늘은 금요일 이네요...^-^ <br/>
+            주말 잘 쉬어요~~~~!!!
+        </p>
+    </div>
+</body>
+</html>

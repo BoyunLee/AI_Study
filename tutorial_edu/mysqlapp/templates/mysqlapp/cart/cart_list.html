@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MysqlAPP - cart_list Page</title>
+    <script type="text/javascript">
+        // 주문내역 등록(입력) 버튼 처리
+        function goInsertView(){
+            location.href = "/mysql/cart_insert_view/";
+        }
+    </script>
+</head>
+<body>
+    <h3>주문내역/장바구니 목록</h3>
+    <p>
+        <a href="/mysql/">[MysqlApp] 바로가기</a>
+    </p>
+    <hr>
+    <!-- 주문내역 등록(입력) 버튼 -->
+    <button onclick="goInsertView()">주문내역 등록(입력)</button>
+    <br>
+
+    <!-- 주문내역/장바구니 목록 테이블 -->
+    <table border="1">
+        <!--제목이 들어가는 tr행-->
+        <tr>
+            <th>주문 번호</th>
+            <th>주문자 아이디</th>
+            <th>주문 상품번호</th>
+            <th>주문 수량</th>
+        </tr>
+        <!--DB에서 가져온 회원 정보가 들어갈 tr행-->
+        {% for dict in cart_list %}
+            <tr>
+                <td><a href="/mysql/cart_view/?cart_no={{dict.cart_no}}&cart_prod={{dict.cart_prod}}">
+                    {{dict.cart_no}}</a>
+                </td>
+                <td>{{ dict.cart_member }}</td>
+                <td>{{ dict.cart_prod }}</td>
+                <td>{{ dict.cart_qty }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
