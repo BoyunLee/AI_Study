@@ -1,0 +1,32 @@
+14/front/14_radioView/요청 처리하기
+
+- html 명 : 14_radioView.html
+** 지역 입력 받아서 처리하기
+- 지역 입력에 사용할 name = mem_addr
+- 전송할 방법 : post 방식
+- 전송 버튼 만들기
+  -- 전송 버튼 클릭하면 자바스크립트 함수 호출
+  -- 함수이름 goSubmit()
+- 자바스크립트 함수 사용하여 지역 입력 여부 확인
+  -- 입력이 되었으면 /front/15_radio/로 전송 후 서버에서 받기
+
+- /front/15_radio/ 요청 처리
+  -- 함수 이름 : radio
+  -- 전송받은 지역이 "부산"이면 >> 페이지로 이동
+			  	  아니면 >> 이전 페이지로 이동
+
+15. /front/15_radioView/ 요청 처리하기
+- 함수명 : 15_radioView
+
+16. /front/16_checkBoxView/ 요청 처리하기
+ - 함수명 : checkBoxView16
+- html명 : 16_checkBoxView
+
+* 지역 입력 처리
+- 입력 박스 name = mem_addr
+- 입력된 값을 서버로 전송
+  -- 전송버튼 생성 : 버튼 클릭 시 goSubmit() 자바스크립트 함수로 입력 상태 확인 후 전송
+  -- 전송 url : /front/17_checkBox
+- html명 :17_checkBox.html(16_checkBoxView.html 복사 사용)
+- 전송 받은 mem_addr을 17_checkBox.html의
+  지역 입력박스에 출력되도록 : value값에 mem_addr1값이 보이도록
