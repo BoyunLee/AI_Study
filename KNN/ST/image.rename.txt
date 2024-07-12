@@ -1,0 +1,4 @@
+파일순서대로 1 ~ 
+Powershell
+cd 경로 
+Get-ChildItem *.jpg | foreach { $i=1 } { Rename-Item $_ -NewName ( $i.ToString() + ".jpg"); $i++ }
